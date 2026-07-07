@@ -1,0 +1,63 @@
+--- DELETE FROM table_name WHERE conditions;
+
+-- 부서 테이블 모두 삭제한다.
+
+SELECT * from user_tables;
+drop table dept2;
+
+CREATE TABLE dept2
+as
+SELECT * FROM departments;
+
+
+DELETE from dept2;
+
+TRUNCATE TABLE dept2;
+
+ROLLBACK;
+
+
+
+-----30번 부서를 삭제 하시오
+SELECT * from dept2;
+SELECT * from dept2 WHERE dept2.department_id=30;
+
+DELETE from dept2 WHERE dept2.department_id = 30;
+
+
+DROP table EMP01;
+
+CREATE TABLE EMP01 (
+    EMPNO     NUMBER(4) NOT NULL PRIMARY KEY, 
+    ENAME     VARCHAR2(10) NOT NULL,
+    JOB       VARCHAR2(9),
+    MGR       NUMBER(4),
+    HIREDATE  DATE NOT NULL,
+    SAL       NUMBER(7,2) NOT NULL,
+    COMM      NUMBER(7,2),
+    DEPTNO    NUMBER(2) NOT NULL  
+);
+
+INSERT INTO EMP01 (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
+VALUES (7369, 'SMITH', 'CLEAK', 7836, DATE'1980-12-17', 800, NULL, 20);
+
+INSERT INTO EMP01 (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
+VALUES (7499, 'ALLEN', 'SALESMAN', 7369, DATE'1987-12-20', 1600, 300, 30);
+
+INSERT INTO EMP01 (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
+VALUES (7839, 'KING', 'PRESIDENT', NULL, DATE'1981-02-08', 5000, NULL, 10);
+
+SELECT * FROM EMP01;
+
+
+CREATE TABLE EMP01 (
+    EMPNO     NUMBER(4) NOT NULL PRIMARY KEY, 
+    ENAME     VARCHAR2(10) NOT NULL,
+    JOB       VARCHAR2(9),
+    MGR       NUMBER(4),
+    HIREDATE  DATE NOT NULL,
+    SAL       NUMBER(7,2) NOT NULL,
+    COMM      NUMBER(7,2),
+    DEPTNO    NUMBER(2) NOT NULL, 
+    CONSTRAINT pk_emp01_no primary key(EMPNO)
+);
